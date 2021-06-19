@@ -30,7 +30,7 @@ public class AreaServiceImpl implements AreaService {
     @Transactional  //默认回滚RuntimeException 运行时异常
     @Override
     public boolean addArea(Area area) {
-        if (area.getAreaName()!=null && "".equals(area.getAreaName())){
+        if (area.getAreaName()!=null && !"".equals(area.getAreaName())){
             area.setCreateTime(new Date());
             area.setLastEditTime(new Date());
             try {
