@@ -11,8 +11,8 @@ public class BinarySearchTest{
 
     @Test
     public void binarySearch(){
-        String[] list={"87", "21", "45", "93"};
-        binarySearch.binarySearch(list,"93");
+        String[] list={"21", "45","87","93"};
+        System.out.println(binarySearch.binarySearch(list,"21"));
     }
 
 }

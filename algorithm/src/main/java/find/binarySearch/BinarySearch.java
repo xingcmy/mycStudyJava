@@ -3,6 +3,8 @@ package find.binarySearch;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.nio.charset.StandardCharsets;
+
 public class BinarySearch {
 
     public int binarySearch(Object[] list, Object item){
@@ -12,16 +14,38 @@ public class BinarySearch {
     public int binarySearch(int[] list, Object item){
         if (isEmpty(list))
             return -1;
+        Object[] objectList = toObject(list);
+        return getSubscript(objectList,item);
+    }
+
+    public int binarySearch(long[] list,Object item){
+        if (isEmpty(list))
+            return -1;
+        Object[] objectList = toObject(list);
+        return getSubscript(objectList,item);
+    }
+
+    private Object[] toObject(int[] list){
         Object[] objectList = new Object[list.length];
         int length = 0;
         for (Object o : list){
             objectList[length]=o;
             length++;
         }
-        return getSubscript(objectList,item);
+        return objectList;
     }
 
-    public int getSubscript(Object[] list,Object item){
+    private Object[] toObject(long[] list){
+        Object[] objectList = new Object[list.length];
+        int length = 0;
+        for (Object o : list){
+            objectList[length]=o;
+            length++;
+        }
+        return objectList;
+    }
+
+    private int getSubscript(Object[] list,Object item){
         if (isEmpty(list))
             return -1;
         int left = 0;
@@ -40,19 +64,61 @@ public class BinarySearch {
     }
 
     private boolean lessThanItem(Object guess, Object item) {
+        return checkTheProperties(guess,item,"left");
+    }
+
+    private boolean checkTheProperties(Object guess,Object item,String around){
         if (guess instanceof Integer){
-            //if (guess < item)
             System.out.println("Integer");
-                return true;
+            int g = (Integer) guess;
+            int i = (Integer) item;
+            if (around.equals("left")){
+                if (g > i)
+                    return false;
+            }else if (around.equals("right")){
+                if (g < i)
+                    return false;
+            }
+            return true;
         }else if (guess instanceof String){
             System.out.println("String");
+            String g = (String) guess;
+            String i = (String) item;
+            byte[] bytesG = stringToByte(g);
+            byte[] bytesI = stringToByte(i);
+            if (bytesG.length == 1 && bytesI.length == 1)
+                if (around.equals("left")){
+                    if (bytesG[0] > bytesI[0])
+                        return false;
+                }else if (around.equals("right")){
+                    if (bytesG[0] < bytesI[0])
+                        return false;
+                }
+            return true;
+        }else if (guess instanceof Long){
+            System.out.println("Long");
+            Long g = (Long) guess;
+            Long i = (Long) item;
+            if (around.equals("left")){
+                if ( g > i)
+                    return false;
+            }else if (around.equals("right")){
+                if ( g < i)
+                    return false;
+            }
             return true;
         }
         return false;
     }
 
+    private byte[] stringToByte(String str){
+        String[] strings=str.split("");
+        byte[] bytes=strings[0].getBytes(StandardCharsets.UTF_8);
+        return bytes;
+    }
+
     private boolean greaterThanItem(Object guess, Object item) {
-        return false;
+        return checkTheProperties(guess,item,"right");
     }
 
     private boolean equalsItem(Object guess, Object item) {
@@ -69,6 +135,13 @@ public class BinarySearch {
     }
 
     private boolean isEmpty(int[] list) {
+        int listSize = list.length;
+        if (listSize <= 0)
+            return true;
+        return false;
+    }
+
+    private boolean isEmpty(long[] list) {
         int listSize = list.length;
         if (listSize <= 0)
             return true;
