@@ -86,14 +86,15 @@ public class BinarySearch {
             String i = (String) item;
             byte[] bytesG = stringToByte(g);
             byte[] bytesI = stringToByte(i);
-            if (bytesG.length == 1 && bytesI.length == 1)
-                if (around.equals("left")){
+            if (bytesG.length == 1 && bytesI.length == 1) {
+                if (around.equals("left")) {
                     if (bytesG[0] > bytesI[0])
                         return false;
-                }else if (around.equals("right")){
+                } else if (around.equals("right")) {
                     if (bytesG[0] < bytesI[0])
                         return false;
                 }
+            }
             return true;
         }else if (guess instanceof Long){
             System.out.println("Long");
