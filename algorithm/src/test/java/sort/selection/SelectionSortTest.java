@@ -13,9 +13,12 @@ public class SelectionSortTest {
 
     @Test
     public void setSelectionSort(){
-        List<Integer> arr = new ArrayList<>(Arrays.asList(5, 3, 6, 2, 10));
+        Object[] arr = new Object[]{"a15L","c54L","b41L","a62L","d23L","f88L","g76L","s92L","o10L","d12L","m14L","z45L","q65L","v19L","h13L"};
         //System.out.println(selectionSort.selectionSortDescendingOrder(arr));
-        System.out.println(selectionSort.selectionSortAscendingOrder(selectionSort.selectionSortDescendingOrder(arr)));
+        Object[] s=selectionSort.selectionSortAscendingOrder(arr);
+        for (Object o : s){
+            System.out.println(o.toString());
+        }
 
 
         int[] arr1 = {5, 3, 6, 2, 10};

@@ -4,8 +4,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Collections;
+import java.util.List;
 
 public class BinarySearch {
+
+    public BinarySearch(){}
 
     public int binarySearch(Object[] list, Object item){
         return getSubscript(list,item);
@@ -14,18 +18,29 @@ public class BinarySearch {
     public int binarySearch(int[] list, Object item){
         if (isEmpty(list))
             return -1;
-        Object[] objectList = toObject(list);
-        return getSubscript(objectList,item);
+        return getSubscript(toObject(list),item);
     }
+
+    public int binarySearch(List<Object> list,Object item){
+        if (isEmpty(list))
+            return -1;
+        return getSubscript(toObject(list),item);
+    }
+
+//    public int binarySearch(List<Integer> list,Object item){
+//        if (isEmpty(list))
+//            return -1;
+//        Object[] objectList = toObject(list);
+//        return getSubscript(objectList,item);
+//    }
 
     public int binarySearch(long[] list,Object item){
         if (isEmpty(list))
             return -1;
-        Object[] objectList = toObject(list);
-        return getSubscript(objectList,item);
+        return getSubscript(toObject(list),item);
     }
 
-    private Object[] toObject(int[] list){
+    public Object[] toObject(int[] list){
         Object[] objectList = new Object[list.length];
         int length = 0;
         for (Object o : list){
@@ -35,7 +50,27 @@ public class BinarySearch {
         return objectList;
     }
 
-    private Object[] toObject(long[] list){
+    public Object[] toObject(List<Object> list){
+        Object[] objectList = new Object[list.size()];
+        int length = 0;
+        for (Object o : list){
+            objectList[length] = o;
+            length++;
+        }
+        return objectList;
+    }
+
+    public Object[] toObject(long[] list){
+        Object[] objectList = new Object[list.length];
+        int length = 0;
+        for (Object o : list){
+            objectList[length]=o;
+            length++;
+        }
+        return objectList;
+    }
+
+    public Object[] toObject(String[] list){
         Object[] objectList = new Object[list.length];
         int length = 0;
         for (Object o : list){
@@ -112,7 +147,7 @@ public class BinarySearch {
         return false;
     }
 
-    private byte[] stringToByte(String str){
+    public byte[] stringToByte(String str){
         String[] strings=str.split("");
         byte[] bytes=strings[0].getBytes(StandardCharsets.UTF_8);
         return bytes;
@@ -148,4 +183,18 @@ public class BinarySearch {
             return true;
         return false;
     }
+
+    private boolean isEmpty(List<Object> list) {
+        int listSize = list.size();
+        if (listSize <= 0)
+            return true;
+        return false;
+    }
+
+//    private boolean isEmpty(List<Integer> list) {
+//        int listSize = list.size();
+//        if (listSize <= 0)
+//            return true;
+//        return false;
+//    }
 }
