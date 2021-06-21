@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SelectionSort {
-    public List<Integer> selectionSortDescendingOrder(List<Integer> arr){
+    public List<Integer> selectionSortAscendingOrder(List<Integer> arr){
         int size = arr.size();
         List<Integer> listArr = new ArrayList<>(size);
         for (int i = 0;i < size;i++){
@@ -15,7 +15,7 @@ public class SelectionSort {
         return listArr;
     }
 
-    public int[] selectionSortDescendingOrder(int[] arr){
+    public int[] selectionSortAscendingOrder(int[] arr){
         int size = arr.length;
         int[] intArr = new int[size];
         for (int i = 0;i < size;i++ ){
@@ -26,7 +26,7 @@ public class SelectionSort {
         return intArr;
     }
 
-    public List<Integer> selectionSortAscendingOrder(List<Integer> arr){
+    public List<Integer> selectionSortDescendingOrder(List<Integer> arr){
         int size = arr.size();
         List<Integer> listArr = new ArrayList<>(size);
         for (int i = 0;i < size;i++){
@@ -37,7 +37,7 @@ public class SelectionSort {
         return listArr;
     }
 
-    public int[] selectionSortAscendingOrder(int[] arr){
+    public int[] selectionSortDescendingOrder(int[] arr){
         int[] intArr = new int[arr.length];
         for (int i = 0;i < arr.length;i++ ){
             int big = findSmallSubscript(arr);
