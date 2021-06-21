@@ -14,6 +14,12 @@ public class SelectionSort {
     public SelectionSort(){
         this.binarySearch = createBinarySearch();
     }
+
+    /**
+     * 选择排序
+     * @param arr
+     * @return
+     */
     public List<Integer> selectionSortAscendingOrder(List<Integer> arr){
         return listAscendingOrder(arr);
     }
@@ -54,10 +60,19 @@ public class SelectionSort {
         return stringDescendingOrder(arr);
     }
 
+    /**
+     * 创建 BinarySearch 对象
+     * @return
+     */
     public BinarySearch createBinarySearch(){
         return new BinarySearch();
     }
 
+    /**
+     * object[] --> int[]
+     * @param list
+     * @return
+     */
     public int[] toInt(Object[] list){
         int[] intList = new int[list.length];
         int length = 0;
@@ -68,6 +83,11 @@ public class SelectionSort {
         return intList;
     }
 
+    /**
+     * object[] --> string[]
+     * @param list
+     * @return
+     */
     public String[] toString(Object[] list){
         String[] stringList = new String[list.length];
         int length = 0;
@@ -78,6 +98,11 @@ public class SelectionSort {
         return stringList;
     }
 
+    /**
+     * object[] --> long[]
+     * @param list
+     * @return
+     */
     public long[] toLong(Object[] list){
         long[] longList = new long[list.length];
         int length = 0;
@@ -88,6 +113,11 @@ public class SelectionSort {
         return longList;
     }
 
+    /**
+     * object[] --> list[]
+     * @param list
+     * @return
+     */
     public List<Integer> toListInteger(Object[] list){
         List<Integer> integerList = new ArrayList<>(list.length);
         for (Object o : list){
@@ -96,6 +126,11 @@ public class SelectionSort {
         return integerList;
     }
 
+    /**
+     * 将 string 第一个字符转为 byte
+     * @param arr
+     * @return
+     */
     public byte[] stringFirstLetterToByte(String[] arr){
         byte[] bytes = new byte[arr.length];
         int length = 0;
@@ -113,7 +148,7 @@ public class SelectionSort {
         for (int i = 0;i < size;i++){
             int small = findSmallSubscript(arr);
             listArr.add(arr.get(small));
-            arr.remove(small);
+            arr.remove(small); //移除已排数据
         }
         return listArr;
     }
@@ -144,7 +179,7 @@ public class SelectionSort {
         for (int i =0;i<length;i++){
             int small = findSmallSubscript(bytes);
             stringArr[i] = arr[small];
-            arr = newArr(arr,small);
+            arr = newArr(arr,small); //移除已排数据
             bytes = newArr(bytes,small);
         }
         return stringArr;
@@ -239,6 +274,11 @@ public class SelectionSort {
         }
     }
 
+    /**
+     * 查找数组中的最大数
+     * @param arr
+     * @return 最大数的下标
+     */
     private int findBigSubscript(List<Integer> arr) {
         int flag = arr.get(0);
         int subscript = 0;
@@ -287,6 +327,12 @@ public class SelectionSort {
         return subscript;
     }
 
+    /**
+     * 移除 code 下标的数据
+     * @param arr
+     * @param code
+     * @return
+     */
     private int[] newArr(int[] arr, int code) {
         int size = arr.length;
         int[] newArr = new int[size-1];
@@ -342,6 +388,12 @@ public class SelectionSort {
         }
         return newArr;
     }
+
+    /**
+     * 查找数组中的最小数
+     * @param arr
+     * @return 最小数的下标
+     */
     private int findSmallSubscript(List<Integer> arr) {
         int flag = arr.get(0);
         int subscript = 0;

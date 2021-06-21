@@ -11,6 +11,12 @@ public class BinarySearch {
 
     public BinarySearch(){}
 
+    /**
+     * 查询list数组中item的下标
+     * @param list
+     * @param item
+     * @return 存在时返回下标 否则返回  -1
+     */
     public int binarySearch(Object[] list, Object item){
         return getSubscript(list,item);
     }
@@ -40,6 +46,11 @@ public class BinarySearch {
         return getSubscript(toObject(list),item);
     }
 
+    /**
+     * int[] --> object[]
+     * @param list
+     * @return
+     */
     public Object[] toObject(int[] list){
         Object[] objectList = new Object[list.length];
         int length = 0;
@@ -50,6 +61,11 @@ public class BinarySearch {
         return objectList;
     }
 
+    /***
+     * List --> Object[]
+     * @param list
+     * @return
+     */
     public Object[] toObject(List<Object> list){
         Object[] objectList = new Object[list.size()];
         int length = 0;
@@ -60,6 +76,11 @@ public class BinarySearch {
         return objectList;
     }
 
+    /**
+     * long[] --> object[]
+     * @param list
+     * @return
+     */
     public Object[] toObject(long[] list){
         Object[] objectList = new Object[list.length];
         int length = 0;
@@ -70,6 +91,11 @@ public class BinarySearch {
         return objectList;
     }
 
+    /**
+     * string[] --> object[]
+     * @param list
+     * @return
+     */
     public Object[] toObject(String[] list){
         Object[] objectList = new Object[list.length];
         int length = 0;
@@ -80,6 +106,12 @@ public class BinarySearch {
         return objectList;
     }
 
+    /**
+     * 获取下标
+     * @param list
+     * @param item
+     * @return
+     */
     private int getSubscript(Object[] list,Object item){
         if (isEmpty(list))
             return -1;
@@ -98,10 +130,23 @@ public class BinarySearch {
         return -1;
     }
 
+    /**
+     * 判断是否属于数组的左半部分
+     * @param guess
+     * @param item
+     * @return
+     */
     private boolean lessThanItem(Object guess, Object item) {
         return checkTheProperties(guess,item,"left");
     }
 
+    /**
+     * 判断 object 类型 int string long
+     * @param guess
+     * @param item
+     * @param around
+     * @return
+     */
     private boolean checkTheProperties(Object guess,Object item,String around){
         if (guess instanceof Integer){
             System.out.println("Integer");
@@ -147,22 +192,44 @@ public class BinarySearch {
         return false;
     }
 
+    /**
+     * string --> byte[]
+     * @param str
+     * @return
+     */
     public byte[] stringToByte(String str){
         String[] strings=str.split("");
         byte[] bytes=strings[0].getBytes(StandardCharsets.UTF_8);
         return bytes;
     }
 
+    /**
+     * 判断是否属于数组的右半部分
+     * @param guess
+     * @param item
+     * @return
+     */
     private boolean greaterThanItem(Object guess, Object item) {
         return checkTheProperties(guess,item,"right");
     }
 
+    /**
+     * 比较 guess 与 item
+     * @param guess
+     * @param item
+     * @return
+     */
     private boolean equalsItem(Object guess, Object item) {
         if (!guess.equals(item) || guess != item)
             return false;
         return true;
     }
 
+    /**
+     * 判断数组是否为空
+     * @param list
+     * @return
+     */
     private boolean isEmpty(Object[] list) {
         int listSize = list.length;
         if (listSize <= 0)
