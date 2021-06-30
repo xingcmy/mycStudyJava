@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <beans>
+<!--           <bean id="welcome" class="com.xingcmy.Welcome">-->
+<!--               <property name="welcome" value="欢迎使用"/>-->
+<!--           </bean>-->
+           <!--构造器 下标-->
+<!--           <bean id="welcome" class="com.xingcmy.Welcome">-->
+<!--               <constructor-arg index="0" value="欢迎"/>-->
+<!--           </bean>-->
+           <!--构造器 类型-->
+<!--           <bean id="welcome" class="com.xingcmy.Welcome">-->
+<!--               <constructor-arg type="java.lang.String" value="欢迎"/>-->
+<!--           </bean>-->
+           <!--构造器 参数-->
+           <bean id="welcome" class="com.xingcmy.Welcome">
+               <constructor-arg name="welcome" value="欢迎"/>
+           </bean>
+           <!--别名-->
+           <alias name="welcome" alias="welcome2"/>
+       </beans>
+
+</beans>
